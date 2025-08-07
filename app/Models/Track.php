@@ -7,7 +7,6 @@ use App\Models\Concerns\LocalizedMetable;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Plank\Metable\Metable;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
@@ -54,5 +53,11 @@ class Track extends Model implements Sortable
             'hide_author' => false,
             'track_editors' => [],
         ];
+    }
+
+    
+    public function getTitleAttribute(): ?string
+    {
+        return $this->getLocalizedMeta('title') ?? $this->attributes['title'] ?? null;
     }
 }
