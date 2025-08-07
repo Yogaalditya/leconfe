@@ -46,8 +46,7 @@ class TrackTable extends Component implements HasForms, HasTable
                 IndexColumn::make('no')
                     ->label('No.'),
                 TextColumn::make('title')
-                    ->label(__('general.title'))
-                    ->getStateUsing(fn ( $record) => $record->getLocalizedMeta('title')), // mungkin kalo ditambahkan ini fungsi yang dibuat sebelumnya itu akan null/kosong, karena sekarang fungsinya mengambil title dari LocalizedMeta.
+                    ->label(__('general.title')),
                 TextColumn::make('editors')
                     ->wrap()
                     ->bulleted()

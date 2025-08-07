@@ -2,6 +2,7 @@
 
 namespace App\Panel\Conference\Resources\Conferences;
 
+use App\Filament\Forms\Components\MultilanguageComponent;
 use App\Models\AuthorRole;
 use App\Panel\Conference\Resources\Conferences\AuthorRoleResource\Pages;
 use App\Tables\Columns\IndexColumn;
@@ -11,7 +12,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rules\Unique;
 
 class AuthorRoleResource extends Resource
 {
@@ -40,13 +40,12 @@ class AuthorRoleResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                MultilanguageComponent::make([
+                    TextInput::make('meta.name')
                     ->label(__('general.name'))
                     ->required()
-                    ->unique(modifyRuleUsing: function (Unique $rule) {
-                        return $rule
-                            ->where('conference_id', app()->getCurrentConference()->getKey());
-                    }, ignoreRecord: true),
+                ]),
+                
             ]);
     }
 
