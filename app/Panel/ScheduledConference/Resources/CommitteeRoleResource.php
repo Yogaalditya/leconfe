@@ -14,7 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rules\Unique;
+
 
 class CommitteeRoleResource extends Resource
 {
@@ -45,10 +45,6 @@ class CommitteeRoleResource extends Resource
                     TextInput::make('meta.name')
                     ->label(__('general.name'))
                     ->required()
-                    // ->unique(modifyRuleUsing: function (Unique $rule) {
-                    //     return $rule
-                    //         ->where('scheduled_conference_id', app()->getCurrentScheduledConference()->getKey());
-                    // }, ignoreRecord: true),
                 ]),
                 
             ]);
