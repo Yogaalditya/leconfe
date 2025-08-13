@@ -155,7 +155,7 @@ class Conference extends Model implements HasAvatar, HasMedia, HasName
 
     public function getFilamentName(): string
     {
-        return $this->getLocalizedMeta('name');
+        return $this->getLocalizedMeta('name') ?? '';
     }
     
     public function getNameAttribute(): string
